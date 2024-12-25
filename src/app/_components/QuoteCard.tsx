@@ -20,7 +20,7 @@ export function QuoteCard({ imgUrl, quote }: QuoteCardProps) {
           />
         </div>
         <blockquote className="text-center text-lg font-medium italic">
-          "{quote}"
+          &quot;{quote}&quot;
         </blockquote>
       </div>
     </div>

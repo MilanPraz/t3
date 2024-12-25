@@ -3,8 +3,12 @@ import Link from "next/link";
 
 export const Navbar = () => {
   return (
-    <nav className="flex w-full items-center justify-between border-b-2 border-white px-10 py-4">
-      <div>Gallery-Boot</div>
+    <nav className="flex w-full items-center justify-between border-b-2 border-white px-10 py-4 backdrop-blur-xl">
+      <div>
+        <Link href={"/"}>
+          <h2 className="text-xl font-semibold">QuoteMandu</h2>
+        </Link>
+      </div>
 
       {/* only gonna render the thing inside it if user is not logged in */}
       <div>
