@@ -13,7 +13,15 @@ export const Navbar = () => {
           {/* <Link href={"/signin"}>Sign In</Link> */}
         </SignedOut>
         <SignedIn>
-          <UserButton />
+          <div className="flex items-center gap-4">
+            <Link
+              href={"/quote"}
+              className="font-semibold text-white underline underline-offset-2"
+            >
+              Post A Quote
+            </Link>
+            <UserButton />
+          </div>
         </SignedIn>
       </div>
     </nav>

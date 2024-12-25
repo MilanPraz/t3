@@ -1,9 +1,9 @@
 import "~/styles/globals.css";
-
+import "@uploadthing/react/styles.css";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 import Link from "next/link";
-import { ClerkProvider } from "@clerk/nextjs";
+import { ClerkProvider, SignedIn, SignedOut } from "@clerk/nextjs";
 import { Navbar } from "./_components/Navbar";
 
 export const metadata: Metadata = {
@@ -20,7 +20,12 @@ export default function RootLayout({
       <html lang="en" className={`${GeistSans.variable} `}>
         <body className="flex flex-col">
           <Navbar />
-          {children}
+          <SignedOut>
+            <div>
+              <h2>Please Sign in First</h2>
+            </div>
+          </SignedOut>
+          <SignedIn>{children}</SignedIn>
         </body>
       </html>
     </ClerkProvider>

@@ -15,8 +15,10 @@ export const createTable = pgTableCreator((name) => `t3gallery_${name}`);
 export const customers = createTable("customer", {
   id: serial("id").primaryKey(),
   name: varchar("name", { length: 256 }).notNull(),
-  imgUrl: varchar("img_url", { length: 2000 }).notNull(), //optional
-  createdAt: timestamp("created_at").defaultNow().notNull(), //created_at is your collumn name and createdAt is js/ts object ->these both are mapped and we use the createdAt variable we made to access or use
+  imgUrl: varchar("img_url", { length: 2000 }), //optional
+  userId: varchar("user_id", { length: 256 }).notNull(),
+  quote: varchar("quote").notNull(),
+  createdAt: timestamp("created_at").defaultNow(), //created_at is your collumn name and createdAt is js/ts object ->these both are mapped and we use the createdAt variable we made to access or use
   updatedAt: timestamp("updated_at")
     .notNull()
     .defaultNow()
