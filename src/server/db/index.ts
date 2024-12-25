@@ -1,18 +1,27 @@
-import { drizzle } from "drizzle-orm/postgres-js";
-import postgres from "postgres";
+// src/db.ts
+import { drizzle } from "drizzle-orm/vercel-postgres";
 
-import { env } from "~/env";
+// import { neon } from "@neondatabase/serverless";
+import { sql } from "@vercel/postgres";
+import { config } from "dotenv";
+import { z } from "zod";
+
+config({ path: ".env" }); // Load .env variables
+
 import * as schema from "./schema";
 
-/**
- * Cache the database connection in development. This avoids creating a new connection on every HMR
- * update.
- */
-const globalForDb = globalThis as unknown as {
-  conn: postgres.Sql | undefined;
-};
+// Validate and type environment variables
+// const envSchema = z.object({
+//   DATABASE_URL: z.string().url(),
+// });
 
-const conn = globalForDb.conn ?? postgres(env.DATABASE_URL);
-if (env.NODE_ENV !== "production") globalForDb.conn = conn;
+// const env = envSchema.parse(process.env); // Throws error if DATABASE_URL is invalid
 
-export const db = drizzle(conn, { schema });
+// Create the connection
+// const sql = neon(process.env.DATABASE_URL!);
+
+// Pass `sql` to drizzle
+// const db = drizzle(sql,{logger:true});
+const db = drizzle(sql, { schema });
+
+export { db };
