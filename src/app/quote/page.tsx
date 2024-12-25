@@ -28,7 +28,7 @@ export default function Page() {
   }
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
-      <div className="flex h-[100vh-100px] min-h-screen flex-col items-center justify-center gap-8 px-8 py-40">
+      <div className="relative z-40 flex h-[100vh-100px] min-h-screen flex-col items-center justify-center gap-8 px-8 py-40">
         <textarea
           onChange={(e) => setQuote(e.target.value)}
           value={quote}
